@@ -1,3 +1,8 @@
+// This file includes code from Google Workbox, which is licensed under the MIT
+// License.
+//
+// Copyright 2018 Google LLC
+
 import prettyBytes from 'pretty-bytes';
 
 import type { ManifestTransform } from './transform-manifest.js';

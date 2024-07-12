@@ -1,3 +1,8 @@
+// This file includes code from Google Workbox, which is licensed under the MIT
+// License.
+//
+// Copyright 2018 Google LLC
+
 import type { Compilation, Compiler } from '@rspack/core';
 import stringify from 'fast-json-stable-stringify';
 import webpackSources from 'webpack-sources';

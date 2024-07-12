@@ -1,3 +1,8 @@
+// This file includes code from Google Workbox, which is licensed under the MIT
+// License.
+//
+// Copyright 2018 Google LLC
+
 import { validate as validateSchema } from 'schema-utils';
 import { PLUGIN_NAME } from './plugin-name.js';
 import { ManifestEntry, ManifestTransform } from './transform-manifest.js';

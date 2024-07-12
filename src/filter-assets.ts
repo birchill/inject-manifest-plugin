@@ -1,3 +1,8 @@
+// This file includes code from Google Workbox, which is licensed under the MIT
+// License.
+//
+// Copyright 2018 Google LLC
+
 import { type Asset, type Chunk, type Compilation } from '@rspack/core';
 import rspack from '@rspack/core';
 import type { ResolvedOptions, Condition } from './options.js';
