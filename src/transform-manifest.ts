@@ -1,3 +1,4 @@
+import type { Compilation } from '@rspack/core';
 import { additionalManifestEntriesTransform } from './additional-manifest-entries-transform.js';
 import { maximumSizeTransform } from './maximum-size-transform.js';
 import { modifyURLPrefixTransform } from './modify-url-prefix-transform.js';
@@ -24,10 +25,10 @@ export type FileDetails = {
 
 export type ManifestTransform = (
   manifestEntries: Array<ManifestEntry & { size: number }>,
-  compilation?: unknown
+  compilation?: Compilation
 ) => Promise<ManifestTransformResult> | ManifestTransformResult;
 
-type ManifestTransformResult = {
+export type ManifestTransformResult = {
   manifest: Array<ManifestEntry & { size: number }>;
   warnings?: Array<string>;
 };
@@ -47,7 +48,7 @@ export async function transformManifest({
   manifestTransforms?: Array<ManifestTransform>;
   maximumFileSizeToCacheInBytes?: number;
   modifyURLPrefix?: Record<string, string>;
-  transformParam?: unknown;
+  transformParam?: Compilation;
 }): Promise<ManifestTransformResultWithWarnings> {
   const allWarnings: Array<string> = [];
 

@@ -1,11 +1,11 @@
 import { type Asset, type Chunk, type Compilation } from '@rspack/core';
 import rspack from '@rspack/core';
-import type { Options, Condition } from './options.js';
+import type { ResolvedOptions, Condition } from './options.js';
 import { PLUGIN_NAME } from './plugin-name.js';
 
 export function filterAssets(
   compilation: Compilation,
-  options: Options
+  options: ResolvedOptions
 ): Set<Asset> {
   const filteredAssets = new Set<Asset>();
   const assets = compilation.getAssets();

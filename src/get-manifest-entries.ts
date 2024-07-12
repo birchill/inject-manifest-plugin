@@ -2,7 +2,7 @@ import type { Compilation } from '@rspack/core';
 
 import { filterAssets } from './filter-assets.js';
 import { getAssetHash } from './get-asset-hash.js';
-import type { Options } from './options.js';
+import type { ResolvedOptions } from './options.js';
 import { resolveRspackUrl } from './resolve-rspack-url.js';
 import {
   transformManifest,
@@ -12,7 +12,7 @@ import {
 
 export async function getManifestEntriesFromCompilation(
   compilation: Compilation,
-  options: Options
+  options: ResolvedOptions
 ): Promise<{ size: number; sortedEntries: ManifestEntry[] }> {
   const filteredAssets = filterAssets(compilation, options);
 

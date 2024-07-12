@@ -142,29 +142,43 @@ export type Options = {
   exclude?: Array<Condition>;
   excludeChunks?: Array<string>;
   include?: Array<Condition>;
-  injectionPoint: string;
+  injectionPoint?: string;
   manifestTransforms?: Array<ManifestTransform>;
   maximumFileSizeToCacheInBytes?: number;
   modifyURLPrefix?: Record<string, string>;
   swDest: string;
 };
 
-export function validate(options: unknown): Options {
+type MakeRequired<T, K extends keyof T> = Omit<T, K> & Pick<Required<T>, K>;
+
+type Flatten<T> =
+  T extends Record<string | number | symbol, unknown>
+    ? {
+        [P in keyof T]: Flatten<T[P]>;
+      }
+    : T;
+
+const defaultOptions = {
+  exclude: [/\.map$/, /^manifest.*\.js$/],
+  injectionPoint: 'self.__WB_MANIFEST',
+  maximumFileSizeToCacheInBytes: 2097152,
+};
+
+export type ResolvedOptions = Flatten<
+  MakeRequired<Options, keyof typeof defaultOptions>
+>;
+
+export function validate(options: unknown): ResolvedOptions {
   if (typeof options !== 'object' || options === null) {
     throw new Error(
       `${PLUGIN_NAME}: Expected an options object, but got ${options}.`
     );
   }
+
   validateSchema(schema, options, {
     name: PLUGIN_NAME,
     baseDataPath: 'options',
   });
 
-  const defaultOptions: Partial<Options> = {
-    exclude: [/\.map$/, /^manifest.*\.js$/],
-    injectionPoint: 'self.__WB_MANIFEST',
-    maximumFileSizeToCacheInBytes: 2097152,
-  };
-
-  return { ...defaultOptions, ...(options as Options) };
+  return { ...defaultOptions, ...options } as ResolvedOptions;
 }

@@ -2,16 +2,21 @@ import type { Compilation, Compiler } from '@rspack/core';
 import stringify from 'fast-json-stable-stringify';
 import webpackSources from 'webpack-sources';
 
-import { type Options, validate } from './options.js';
+import { type ResolvedOptions, type Options, validate } from './options.js';
 import { PLUGIN_NAME } from './plugin-name.js';
 import { getManifestEntriesFromCompilation } from './get-manifest-entries.js';
 import { escapeRegExp } from './escape-regexp.js';
+import {
+  ManifestEntry,
+  ManifestTransform,
+  ManifestTransformResult,
+} from './transform-manifest.js';
 
-export class InjectManifestPlugin {
-  options: Options;
+export class InjectManifest {
+  #options: ResolvedOptions;
 
-  constructor(options: unknown) {
-    this.options = validate(options);
+  constructor(options: Options) {
+    this.#options = validate(options);
   }
 
   apply(compiler: Compiler) {
@@ -21,13 +26,18 @@ export class InjectManifestPlugin {
           name: PLUGIN_NAME,
           stage: 1000,
         },
-        () => injectManifest(compilation, this.options)
+        () => injectManifest(compilation, this.#options)
       );
     });
   }
 }
 
-async function injectManifest(compilation: Compilation, inputOptions: Options) {
+export { Options, ManifestEntry, ManifestTransform, ManifestTransformResult };
+
+async function injectManifest(
+  compilation: Compilation,
+  inputOptions: ResolvedOptions
+) {
   const options = { ...inputOptions };
 
   // Look up the service worker asset
