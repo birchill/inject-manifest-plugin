@@ -1,1 +1,1 @@
-export const PLUGIN_NAME = 'InjectManifestPlugin';
+export const PLUGIN_NAME = 'InjectManifest';
