@@ -1,0 +1,58 @@
+{
+  "name": "@birchill/inject-manifest-plugin",
+  "version": "0.1.0",
+  "description": "rspack plugin to inject a manifest file into a service worker file",
+  "repository": "https://github.com/birchill/inject-manifest-plugin/",
+  "keywords": [
+    "service worker",
+    "manifest"
+  ],
+  "author": "Birchill, Inc.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "fast-json-stable-stringify": "^2.1.0",
+    "pretty-bytes": "^6.1.1",
+    "schema-utils": "^4.2.0",
+    "webpack-sources": "^3.2.3"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "8.0.1",
+    "@rspack/core": "1.0.0-alpha.3",
+    "@types/node": "20.14.10",
+    "@types/webpack-sources": "3.2.3",
+    "husky": "9.0.11",
+    "knip": "5.25.2",
+    "lint-staged": "15.2.7",
+    "prettier": "3.3.2",
+    "release-it": "17.5.0",
+    "tsup": "8.1.0",
+    "typescript": "5.5.3"
+  },
+  "peerDependencies": {
+    "@rspack/core": "^1.0.0-alpha.3"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepublishOnly": "pnpm build",
+    "build": "tsup",
+    "release": "release-it",
+    "prepare": "husky"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "lint-staged": {
+    "*.{ts,json}": [
+      "prettier --write"
+    ]
+  }
+}
