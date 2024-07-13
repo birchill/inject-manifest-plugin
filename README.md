@@ -257,5 +257,5 @@ with rspack's native service worker generation.
 - [@aaron/workbox-rspack-plugin](https://www.npmjs.com/package/@aaroon/workbox-rspack-plugin).
   More up-to-date port.
 - [`inject-manifest-plugin`](https://www.npmjs.com/package/inject-manifest-plugin).
-  A much leaner version of what workbox does, adapter to work with both webpack
-  and rspack.
+  A much leaner version of what Workbox's `InjectManifest` does (with different
+  but similar options), adapted to work with both webpack and rspack.
