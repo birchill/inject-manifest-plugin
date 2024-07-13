@@ -11,6 +11,7 @@ import { type ResolvedOptions, type Options, validate } from './options.js';
 import { PLUGIN_NAME } from './plugin-name.js';
 import { getManifestEntriesFromCompilation } from './get-manifest-entries.js';
 import { escapeRegExp } from './escape-regexp.js';
+import { replaceAndUpdateSourceMap } from './replace-and-update-sourcemap.js';
 import {
   ManifestEntry,
   ManifestTransform,
@@ -77,12 +78,31 @@ async function injectManifest(
   const manifestString = stringify(sortedEntries);
 
   // Inject the manifest at the injectionPoint
-  compilation.updateAsset(
-    options.swDest,
-    new webpackSources.RawSource(
-      swAssetString.replace(options.injectionPoint, manifestString)
-    ) as any
-  );
+  const sourceMapAssetName = swAsset.info.related?.sourceMap;
+  if (sourceMapAssetName) {
+    const sourceMapAsset = compilation.getAsset(sourceMapAssetName)!;
+    const { source, map } = await replaceAndUpdateSourceMap({
+      jsFilename: options.swDest,
+      originalMap: JSON.parse(sourceMapAsset.source.source().toString()),
+      originalSource: swAssetString,
+      replaceString: manifestString,
+      searchString: options.injectionPoint,
+    });
 
-  // TODO Update the sourcemap
+    compilation.updateAsset(
+      sourceMapAssetName,
+      new webpackSources.RawSource(map) as any
+    );
+    compilation.updateAsset(
+      options.swDest,
+      new webpackSources.RawSource(source) as any
+    );
+  } else {
+    compilation.updateAsset(
+      options.swDest,
+      new webpackSources.RawSource(
+        swAssetString.replace(options.injectionPoint, manifestString)
+      ) as any
+    );
+  }
 }

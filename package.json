@@ -21,6 +21,7 @@
     "fast-json-stable-stringify": "^2.1.0",
     "pretty-bytes": "^6.1.1",
     "schema-utils": "^4.2.0",
+    "source-map": "^0.7.4",
     "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
