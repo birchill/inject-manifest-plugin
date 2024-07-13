@@ -5,6 +5,7 @@
 
 import type { Compilation, Compiler } from '@rspack/core';
 import stringify from 'fast-json-stable-stringify';
+import prettyBytes from 'pretty-bytes';
 import webpackSources from 'webpack-sources';
 
 import { type ResolvedOptions, type Options, validate } from './options.js';
@@ -71,7 +72,7 @@ async function injectManifest(
   }
 
   // Generate the manifest source
-  const { sortedEntries } = await getManifestEntriesFromCompilation(
+  const { size, sortedEntries } = await getManifestEntriesFromCompilation(
     compilation,
     options
   );
@@ -103,6 +104,13 @@ async function injectManifest(
       new webpackSources.RawSource(
         swAssetString.replace(options.injectionPoint, manifestString)
       ) as any
+    );
+  }
+
+  if (compilation.getLogger) {
+    const logger = compilation.getLogger(PLUGIN_NAME);
+    logger.info(
+      `The service worker at ${options.swDest} will precache ${sortedEntries.length} URLs, totaling ${prettyBytes(size)}.`
     );
   }
 }
