@@ -76,7 +76,16 @@ async function injectManifest(
     compilation,
     options
   );
-  const manifestString = stringify(sortedEntries);
+  let manifestString = stringify(sortedEntries);
+
+  // If the manifest is going to be injected into a string that is eval'ed, use
+  // single quotes to avoid breaking the string.
+  if (
+    typeof compilation.options.devtool === 'string' &&
+    compilation.options.devtool.startsWith('eval')
+  ) {
+    manifestString = manifestString.replace(/"/g, `'`);
+  }
 
   // Inject the manifest at the injectionPoint
   const sourceMapAssetName = swAsset.info.related?.sourceMap;
