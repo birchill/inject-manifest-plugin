@@ -1,6 +1,6 @@
 {
   "name": "@birchill/inject-manifest-plugin",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "rspack plugin to inject a manifest file into a service worker file",
   "repository": "https://github.com/birchill/inject-manifest-plugin/",
   "keywords": [
