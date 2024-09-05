@@ -29,13 +29,13 @@
     "@rspack/core": "1.0.3",
     "@types/node": "20.14.10",
     "@types/webpack-sources": "3.2.3",
-    "husky": "9.0.11",
-    "knip": "5.25.2",
-    "lint-staged": "15.2.7",
-    "prettier": "3.3.2",
-    "release-it": "17.5.0",
-    "tsup": "8.1.0",
-    "typescript": "5.5.3"
+    "husky": "9.1.5",
+    "knip": "5.29.2",
+    "lint-staged": "15.2.10",
+    "prettier": "3.3.3",
+    "release-it": "17.6.0",
+    "tsup": "8.2.4",
+    "typescript": "5.5.4"
   },
   "peerDependencies": {
     "@rspack/core": "^1.0.0"
