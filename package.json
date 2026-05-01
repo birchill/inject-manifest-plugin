@@ -27,7 +27,7 @@
   "devDependencies": {
     "@release-it/conventional-changelog": "10.0.0",
     "@rspack/core": "1.2.2",
-    "@types/node": "22.13.1",
+    "@types/node": "24.12.2",
     "@types/webpack-sources": "3.2.3",
     "husky": "9.1.7",
     "knip": "5.43.6",
