@@ -35,9 +35,6 @@ importers:
       '@types/node':
         specifier: 24.12.2
         version: 24.12.2
-      '@types/webpack-sources':
-        specifier: 3.2.3
-        version: 3.2.3
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -777,12 +774,6 @@ packages:
   '@types/parse-path@7.1.0':
     resolution: {integrity: sha512-EULJ8LApcVEPbrfND0cRQqutIOdiIgJ1Mgrhpy755r14xMohPTEpkV/k28SJvuOs9bHRFW8x+KeDAEPiGQPB9Q==}
     deprecated: This is a stub types definition. parse-path provides its own type definitions, so you do not need this installed.
-
-  '@types/source-list-map@0.1.6':
-    resolution: {integrity: sha512-5JcVt1u5HDmlXkwOD2nslZVllBBc7HDuOICfiZah2Z0is8M8g+ddAEawbmd3VjedfDHBzxCaXLs07QEmb7y54g==}
-
-  '@types/webpack-sources@3.2.3':
-    resolution: {integrity: sha512-4nZOdMwSPHZ4pTEZzSp0AsTM4K7Qmu40UKW4tJDiOVs20UzYF9l+qUe4s0ftfN0pin06n+5cWWDJXH+sbhAiDw==}
 
   agent-base@8.0.0:
     resolution: {integrity: sha512-QT8i0hCz6C/KQ+KTAbSNwCHDGdmUJl2tp2ZpNlGSWCfhUNVbYG2WLE3MdZGBAgXPV4GAvjGMxo+C1hroyxmZEg==}
@@ -2252,14 +2243,6 @@ snapshots:
   '@types/parse-path@7.1.0':
     dependencies:
       parse-path: 7.1.0
-
-  '@types/source-list-map@0.1.6': {}
-
-  '@types/webpack-sources@3.2.3':
-    dependencies:
-      '@types/node': 24.12.2
-      '@types/source-list-map': 0.1.6
-      source-map: 0.7.6
 
   agent-base@8.0.0: {}
 
