@@ -38,16 +38,19 @@ jobs:
           git config --global user.name "Release It"
           git config --global user.email "actions@users.noreply.github.com"
 
+      # Temporary until setup-node action comes with npm version that contains
+      # OIDC setup by default
+      - name: update npm
+        run: npm update -g npm
+
       - name: Publish default version
         if: ${{ inputs.version == '' }}
         run: pnpm release-it --ci
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
         if: ${{ inputs.version }}
         run: pnpm release-it --ci -i ${{ inputs.version }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

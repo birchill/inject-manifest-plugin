@@ -11,7 +11,7 @@
     }
   },
   "npm": {
-    "publishArgs": ["--provenance"]
+    "skipChecks": true
   },
   "plugins": {
     "@release-it/conventional-changelog": {
