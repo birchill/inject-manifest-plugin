@@ -10,39 +10,45 @@
   "author": "Birchill, Inc.",
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
   "files": [
     "dist/**"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
     "fast-json-stable-stringify": "^2.1.0",
-    "pretty-bytes": "^6.1.1",
-    "schema-utils": "^4.3.0",
-    "source-map": "^0.7.4",
-    "webpack-sources": "^3.2.3"
+    "pretty-bytes": "^7.1.0",
+    "schema-utils": "^4.3.3",
+    "source-map": "^0.7.6",
+    "webpack-sources": "^3.4.1"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "10.0.0",
+    "@release-it/conventional-changelog": "11.0.0",
     "@rspack/core": "1.2.2",
     "@types/node": "24.12.2",
-    "@types/webpack-sources": "3.2.3",
     "husky": "9.1.7",
-    "knip": "5.43.6",
-    "lint-staged": "15.4.3",
-    "prettier": "3.5.0",
-    "release-it": "18.1.2",
-    "tsup": "8.3.6",
-    "typescript": "5.7.3"
+    "knip": "6.12.0",
+    "lint-staged": "17.0.2",
+    "prettier": "3.8.3",
+    "release-it": "20.0.1",
+    "tsdown": "0.21.10",
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "@rspack/core": "^1.0.0"
   },
   "scripts": {
     "prepublishOnly": "pnpm build",
-    "build": "tsup",
+    "build": "tsdown",
     "release": "release-it",
     "prepare": "husky"
   },
@@ -54,11 +60,5 @@
     "*.{ts,json}": [
       "prettier --write"
     ]
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  },
-  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
+  }
 }

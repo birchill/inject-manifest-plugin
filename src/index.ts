@@ -13,7 +13,7 @@ import { PLUGIN_NAME } from './plugin-name.js';
 import { getManifestEntriesFromCompilation } from './get-manifest-entries.js';
 import { escapeRegExp } from './escape-regexp.js';
 import { replaceAndUpdateSourceMap } from './replace-and-update-sourcemap.js';
-import {
+import type {
   ManifestEntry,
   ManifestTransform,
   ManifestTransformResult,

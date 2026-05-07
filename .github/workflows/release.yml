@@ -17,12 +17,14 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v6
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
 
-      - uses: actions/setup-node@v4.0.3
+      - uses: actions/setup-node@v6
         with:
           cache: pnpm
           node-version: 24
