@@ -21,9 +21,6 @@
       "require": "./dist/index.cjs"
     }
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "dependencies": {
     "fast-json-stable-stringify": "^2.1.0",
     "pretty-bytes": "^7.1.0",
@@ -52,13 +49,11 @@
     "release": "release-it",
     "prepare": "husky"
   },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5"
+  "engines": {
+    "pnpm": ">=11"
   },
-  "lint-staged": {
-    "*.{ts,json}": [
-      "prettier --write"
-    ]
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "engines": {}
   }
 }

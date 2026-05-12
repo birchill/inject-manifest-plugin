@@ -23,11 +23,7 @@ export type ManifestEntry = {
   url: string;
 };
 
-export type FileDetails = {
-  file: string;
-  hash: string | null;
-  size: number;
-};
+export type FileDetails = { file: string; hash: string | null; size: number };
 
 export type ManifestTransform = (
   manifestEntries: Array<ManifestEntry & { size: number }>,

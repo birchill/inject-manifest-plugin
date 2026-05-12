@@ -29,10 +29,7 @@ export class InjectManifest {
   apply(compiler: Compiler) {
     compiler.hooks.thisCompilation.tap(PLUGIN_NAME, (compilation) => {
       compilation.hooks.processAssets.tapPromise(
-        {
-          name: PLUGIN_NAME,
-          stage: 1000,
-        },
+        { name: PLUGIN_NAME, stage: 1000 },
         () => injectManifest(compilation, this.#options)
       );
     });

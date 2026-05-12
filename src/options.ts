@@ -17,12 +17,8 @@ const schema = {
       type: 'array' as const,
       items: {
         anyOf: [
-          {
-            $ref: '#/definitions/ManifestEntry',
-          },
-          {
-            type: 'string' as const,
-          },
+          { $ref: '#/definitions/ManifestEntry' },
+          { type: 'string' as const },
         ],
       },
     },
@@ -30,9 +26,7 @@ const schema = {
       description:
         'One or more chunk names whose corresponding output files should be included in the precache manifest.',
       type: 'array' as const,
-      items: {
-        type: 'string' as const,
-      },
+      items: { type: 'string' as const },
     },
     dontCacheBustURLsMatching: {
       description:
@@ -43,25 +37,19 @@ const schema = {
       description:
         "One or more specifiers used to exclude assets from the precache manifest. This is interpreted following [the same rules](https://www.rspack.dev/config/module.html#condition) as `rspack`'s standard `exclude` option. If not provided, the default value is `[/\\.map$/, /^manifest.*\\.js$/]`.",
       type: 'array' as const,
-      items: {
-        ref: '#/definitions/RuleSetCondition',
-      },
+      items: { ref: '#/definitions/RuleSetCondition' },
     },
     excludeChunks: {
       description:
         'One or more chunk names whose corresponding output files should be excluded from the precache manifest.',
       type: 'array' as const,
-      items: {
-        type: 'string' as const,
-      },
+      items: { type: 'string' as const },
     },
     include: {
       description:
         "One or more specifiers used to include assets in the precache manifest. This is interpreted following [the same rules](https://www.rspack.dev/config/module.html#condition) as `rspack`'s standard `include` option.",
       type: 'array' as const,
-      items: {
-        ref: '#/definitions/RuleSetCondition',
-      },
+      items: { ref: '#/definitions/RuleSetCondition' },
     },
     injectionPoint: {
       description:
@@ -73,9 +61,7 @@ const schema = {
       description:
         'One or more functions which will be applied sequentially against the generated manifest. If `modifyURLPrefix` or `dontCacheBustURLsMatching` are also specified, their corresponding transformations will be applied first.',
       type: 'array' as const,
-      items: {
-        instanceof: 'Function',
-      },
+      items: { instanceof: 'Function' },
     },
     maximumFileSizeToCacheInBytes: {
       description:
@@ -87,9 +73,7 @@ const schema = {
       description:
         "An object mapping string prefixes to replacement string values. This can be used to, e.g., remove or add a path prefix from a manifest entry if your web hosting setup doesn't match your local filesystem setup. As an alternative with more flexibility, you can use the `manifestTransforms` option and provide a function that modifies the entries in the manifest using whatever logic you provide.",
       type: 'object' as const,
-      additionalProperties: {
-        type: 'string' as const,
-      },
+      additionalProperties: { type: 'string' as const },
     },
     swDest: {
       description:
@@ -101,37 +85,20 @@ const schema = {
     ManifestEntry: {
       type: 'object' as const,
       properties: {
-        integrity: {
-          type: 'string' as const,
-        },
+        integrity: { type: 'string' as const },
         revision: {
-          anyOf: [
-            {
-              type: 'string' as const,
-            },
-            {
-              type: 'null' as const,
-            },
-          ],
+          anyOf: [{ type: 'string' as const }, { type: 'null' as const }],
         },
-        url: {
-          type: 'string' as const,
-        },
+        url: { type: 'string' as const },
       },
       additionalProperties: false,
       required: ['revision', 'url'],
     },
     RuleSetCondition: {
       anyOf: [
-        {
-          type: 'string' as const,
-        },
-        {
-          instanceof: 'RegExp',
-        },
-        {
-          instanceof: 'Function',
-        },
+        { type: 'string' as const },
+        { instanceof: 'RegExp' },
+        { instanceof: 'Function' },
       ],
     },
   },
@@ -158,9 +125,7 @@ type MakeRequired<T, K extends keyof T> = Omit<T, K> & Pick<Required<T>, K>;
 
 type Flatten<T> =
   T extends Record<string | number | symbol, unknown>
-    ? {
-        [P in keyof T]: Flatten<T[P]>;
-      }
+    ? { [P in keyof T]: Flatten<T[P]> }
     : T;
 
 const defaultOptions = {
