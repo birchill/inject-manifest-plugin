@@ -1,5 +1,1 @@
-{
-  "objectWrap": "collapse",
-  "singleQuote": true,
-  "trailingComma": "es5"
-}
+{ "objectWrap": "collapse", "singleQuote": true, "trailingComma": "es5" }
