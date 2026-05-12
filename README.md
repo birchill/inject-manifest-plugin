@@ -91,11 +91,7 @@ npm install -D @birchill/inject-manifest-plugin
 
    const config = {
      // ...
-     plugins: [
-       new InjectManifest({
-         swDest: 'serviceworker.js',
-       }),
-     ],
+     plugins: [new InjectManifest({ swDest: 'serviceworker.js' })],
    };
    ```
 

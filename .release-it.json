@@ -4,15 +4,8 @@
     "requireBranch": "main",
     "tagName": "v${version}"
   },
-  "github": {
-    "release": true,
-    "comments": {
-      "submit": true
-    }
-  },
-  "npm": {
-    "skipChecks": true
-  },
+  "github": { "release": true, "comments": { "submit": true } },
+  "npm": { "skipChecks": true },
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
