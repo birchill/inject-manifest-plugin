@@ -94,8 +94,5 @@ export async function replaceAndUpdateSourceMap({
     }
   );
 
-  return {
-    map: JSON.stringify(updatedSourceMap),
-    source: src,
-  };
+  return { map: JSON.stringify(updatedSourceMap), source: src };
 }

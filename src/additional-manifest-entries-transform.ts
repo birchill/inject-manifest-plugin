@@ -24,11 +24,7 @@ export function additionalManifestEntriesTransform(
       // (An object with a revision property set to null is okay.)
       if (typeof additionalEntry === 'string') {
         stringEntries.add(additionalEntry);
-        manifest.push({
-          revision: null,
-          size: 0,
-          url: additionalEntry,
-        });
+        manifest.push({ revision: null, size: 0, url: additionalEntry });
       } else {
         if (additionalEntry && additionalEntry.revision === undefined) {
           stringEntries.add(additionalEntry.url);
